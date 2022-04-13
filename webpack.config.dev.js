@@ -11,7 +11,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    assetModuleFilename: 'images/[name][ext]'
+    assetModuleFilename: 'images/[name][ext]',
+    publicPath: '/'
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -52,5 +53,10 @@ module.exports = {
   },
   plugins: [new HtmlWebpackPlugin({
     template: path.resolve(__dirname, './public/index.html')
-  }), new MiniCssExtractPlugin(), new Dotenv()]
+  }), new MiniCssExtractPlugin(), new Dotenv()],
+  devServer: {
+    historyApiFallback: {
+      disableDotRule: true
+    }
+  }
 }
